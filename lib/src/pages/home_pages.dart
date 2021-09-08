@@ -11,7 +11,8 @@ class HomePageTemp extends StatelessWidget {
         title: Text('Components'),
       ),
       body: ListView(
-        children: _crearItems(),
+        // children: _crearItems(),
+        children: _createItemsCorta(),
       ),
     );
   }
@@ -21,7 +22,7 @@ class HomePageTemp extends StatelessWidget {
     
     for (var item in options) {
       final tempWidget = ListTile(
-        title: Text(item),
+        title:  Text(item),
       );
       lista..add(tempWidget)
            ..add(Divider(
@@ -30,6 +31,30 @@ class HomePageTemp extends StatelessWidget {
       );
     }
     return lista;
+  }
+
+  List<Widget> _createItemsCorta() {
+    var widgets = options.map((item) {
+      
+      return Column(
+        children: [
+          ListTile(
+            title: Text(item),
+            subtitle: Text('Description'),
+            leading: Icon(Icons.account_circle_rounded),
+            trailing: Icon(Icons.arrow_forward_ios_sharp),
+            onTap: (){},
+            onLongPress: (){
+              print('object');
+            },
+          ),
+          Divider()
+        ],
+      );
+    }).toList();
+
+    return widgets;
+
   }
 
 }
